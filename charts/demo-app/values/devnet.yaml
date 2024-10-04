@@ -5,11 +5,11 @@ controller:
   type: deployment
 
 image:
-  repository: nginx
-  tag: 1.14.2
-#  repository: 186312734932.dkr.ecr.us-west-2.amazonaws.com/demo-app
-#  pullPolicy: Always
-#  tag: v0.1.0
+#  repository: nginx
+#  tag: 1.14.2
+  repository: scrolltech/demo-app
+  pullPolicy: Always
+  tag: v0.0.1
 
 podLabels:
   app: "demo-app"
@@ -60,24 +60,24 @@ affinity:
               values:
                 - private
 
-persistence:
-  htlm:
-    enabled: true
-    type: configMap
-    name: demo-app-html
-    mountPath: /usr/share/nginx/html/index.html
-    subPath: index.html
-
-configMaps:
-  html:
-    enabled: true
-    data:
-      index.html: |
-        <body style="text-align: center;">
-        <h1 > Welcome Scrollers ! </h1>
-        <p style="font-size: 22px;"> This is a simple demo app using argocd and helm charts :) </p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Cartoon_space_rocket.png"  width="300" height="300">
-        </body>
+#persistence:
+#  htlm:
+#    enabled: true
+#    type: configMap
+#    name: demo-app-html
+#    mountPath: /usr/share/nginx/html/index.html
+#    subPath: index.html
+#
+#configMaps:
+#  html:
+#    enabled: true
+#    data:
+#      index.html: |
+#        <body style="text-align: center;">
+#        <h1 > Welcome Scrollers ! </h1>
+#        <p style="font-size: 22px;"> This is a simple demo app using argocd and helm charts :) </p>
+#        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Cartoon_space_rocket.png"  width="300" height="300">
+#        </body>
 
 ingress:
   main:
