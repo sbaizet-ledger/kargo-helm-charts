@@ -1,0 +1,38 @@
+---
+controller:
+  replicas: 1
+  strategy: RollingUpdate
+  type: deployment
+image:
+  repository: nginx
+  pullPolicy: Always
+  tag: 1.14.2
+
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        enabled: true
+        port: 80
+
+probes:
+  liveness:
+    enabled: true
+    httpGet:
+      path: /
+      port: 80
+  readiness:
+    enabled: false
+  startup:
+    enabled: false
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: network
+              operator: In
+              values:
+                - private
