@@ -14,9 +14,6 @@ image:
 podLabels:
   app: "demo-app"
 
-imagePullSecrets:
-  - name: regcred
-
 resources:
   requests:
     memory: "50Mi"
