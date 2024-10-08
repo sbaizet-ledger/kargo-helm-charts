@@ -1,0 +1,35 @@
+configVersion: v1alpha1
+branchConfigs:
+  - name: env/devnet
+    appConfigs:
+      demo-app:
+        configManagement:
+          path: charts/demo-app
+          helm:
+            releaseName: demo-app-devnet
+            namespace: demo-app-devnet
+            valueFiles:
+              - values/devnet.yaml
+        outputPath: demo-app
+  - name: env/sepolia
+    appConfigs:
+      demo-app:
+        configManagement:
+          path: charts/demo-app
+          helm:
+            releaseName: demo-app-sepolia
+            namespace: demo-app-sepolia
+            valueFiles:
+              - values/sepolia.yaml
+        outputPath: demo-app
+
+  - name: env/mainnet
+    appConfigs:
+      demo-app:
+        configManagement:
+          path: charts/demo-app
+          helm:
+            releaseName: demo-app-mainnet
+            namespace: demo-app-mainnet
+              - values/mainnet.yaml
+        outputPath: demo-app
